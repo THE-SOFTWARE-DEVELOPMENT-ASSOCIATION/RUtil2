@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.19)
 
 project(RUtil2)
 
@@ -36,12 +36,8 @@ foreach(SRC_HEADER ${SRC_HEADERS})
 endforeach()
 target_include_directories(RUtil2 INTERFACE "${CMAKE_CURRENT_BINARY_DIR}/include")
 
-if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}")  # Test subproject
+if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}"
+    OR RUTIL2_BUILD_TESTS)  # Test subproject
     include(CTest)
-    #add_subdirectory(test)
+    add_subdirectory(test)
 endif()
-
-# Workaround for CMake version older than 3.1
-# Remove this and set the minimum required version to 3.1
-# when we make sure everyone is having CMake 3.1
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")

@@ -38,7 +38,7 @@ void String_GetWord(String* This, String* Dest, int Index);
 void String_SetWord(String* This, int Index, String* Data);
 
 void String_Join(String* This, String* Sorc);
-void String_JoinChars(String* This, char* Sorc);
+void String_JoinChars(String* This, const char* Sorc);
 
 int String_Equal(String* This, String* Sorc);
 int String_EqualN(String* This, String* Sorc, int w);

@@ -9,7 +9,7 @@ Rocaloid Coding Utility 2
 
 Requirements
 ===
-* CMake 2.8.4 or higher
+* CMake 3.19 or higher
 
 Tutorial
 ===

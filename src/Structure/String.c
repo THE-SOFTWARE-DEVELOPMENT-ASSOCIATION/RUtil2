@@ -146,7 +146,7 @@ void String_Join(String* This, String* Sorc)
     This -> WordNum += Sorc -> WordNum;
 }
 
-void String_JoinChars(String* This, char* Sorc)
+void String_JoinChars(String* This, const char* Sorc)
 {
     int Len = strlen(Sorc);
     Array_Resize(char, This -> Data,
@@ -264,13 +264,13 @@ void Mid(String* Dest, String* Sorc, int From, int Count)
     for(int i = 0; i < From && Begin; ++ i)
         Begin = next_char_safe_utf8(Begin, 
                                     Sorc -> Data + Sorc -> Data_Index + 1);
-        RAssert(Begin);
+    RAssert(Begin);
     End = Begin;
     
     for(int i = 0; i < Count && End; ++ i)
         End = next_char_safe_utf8(End, 
                                   Sorc -> Data + Sorc -> Data_Index + 1);
-        RAssert(End);
+    RAssert(End);
     
     int MidLen = End - Begin;
     String_AllocLength(Dest, MidLen);
@@ -288,7 +288,7 @@ void MidFrom(String* Dest, String* Sorc, int From)
     
     for(int i = 0; i < From; ++ i)
         Begin = next_char_safe_utf8(Begin, End);
-        RAssert(Begin);
+    RAssert(Begin);
     
     int MidLen = End - Begin;
     String_AllocLength(Dest, MidLen);
@@ -304,7 +304,7 @@ void Right(String* Dest, String* Sorc, int Count)
     char* Begin = End;
     for(int i = 0; i < Count; ++ i)
         Begin = prev_char_safe_utf8(Begin, Sorc -> Data);
-        RAssert(Begin);
+    RAssert(Begin);
     
     int Len = End - Begin;
     String_AllocLength(Dest, Len);
@@ -321,7 +321,7 @@ void Left(String* Dest, String* Sorc, int Count)
     for(int i = 0; i < Count; ++ i)
         End = next_char_safe_utf8(End, 
                                   Sorc -> Data + Sorc -> Data_Index + 1);
-        RAssert(End);
+    RAssert(End);
     
     int Len = End - Begin;
     String_AllocLength(Dest, Len);
